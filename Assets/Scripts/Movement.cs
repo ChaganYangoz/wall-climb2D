@@ -5,13 +5,16 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody2D rb2D;
-    [SerializeField] float speed = 5f;
+    [SerializeField] float speed;
     float backupSpeed;
 
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+
+        speed = 16f;
         backupSpeed = speed;
+
         rb2D.velocity = new Vector2(speed, 0);
     }
 
@@ -21,8 +24,6 @@ public class Movement : MonoBehaviour
         {
             rb2D.velocity = new Vector2(speed, 0);
         }
-
-        rb2D.velocity=new Vector2(rb2D.velocity.x, 5);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

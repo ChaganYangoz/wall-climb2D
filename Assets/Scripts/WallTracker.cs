@@ -11,28 +11,13 @@ public class WallTracker : MonoBehaviour
 
     private void Awake()
     {
-        transform.position=anchor.transform.position;
+        gameObject.transform.position = anchor.transform.position;
     }
-
     private void Update()
     {
-        if(player.transform.position.y>border.transform.position.y)
+        if (player.transform.position.y > transform.position.y + 5)
         {
-            UpdateWalls();
+            transform.position = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
         }
-        if (player.transform.position.y > transform.position.y + 10)
-        {
-            transform.position = new Vector2(transform.position.x, transform.position.y + 10);
-        }
-    }
-
-
-
-
-
-    public void UpdateWalls()
-    {
-        transform.position = new Vector2(transform.position.x, transform.position.y + 10);
-        border.transform.position = new Vector2(transform.position.x, transform.position.y + 10);
     }
 }

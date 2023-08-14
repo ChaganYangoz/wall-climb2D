@@ -9,7 +9,7 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("SpawnObstacle", 2f, 2f);
+        //InvokeRepeating("SpawnObstacle", 2f, 2f);
     }
     void SpawnObstacle()
     {
