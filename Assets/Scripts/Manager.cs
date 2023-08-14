@@ -5,22 +5,39 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     [SerializeField] List<GameObject> prefabs;
-    [SerializeField] GameObject border;
+    [SerializeField] List<GameObject> spawnPos;
 
     private void Start()
     {
-        //InvokeRepeating("SpawnObstacle", 2f, 2f);
+        InvokeRepeating("SpawnObstacle", 2f, 2f);
     }
     void SpawnObstacle()
     {
-        GameObject obstacle = Instantiate(prefabs[0]);
-        obstacle.transform.position = new Vector2(RandomSpawnPos().x, border.transform.position.y);
+        int index;
+        index = Random.Range(0, 1);
+        Instantiate(prefabs[index], RandomSpawnPos(), prefabs[index].transform.rotation);
+        
+       
+
     }
 
-    Vector2 RandomSpawnPos()
+   
+    Vector3 RandomSpawnPos()
     {
-        int randomPosX;
-        randomPosX = Random.Range(-4, 4);
-        return new Vector2(randomPosX, 0);
+        int index;
+        index = Random.Range(0, 2);
+        float spawnPosX = spawnPos[index].transform.position.x;
+
+        if (index == 0)
+        {
+            spawnPosX = spawnPos[index].transform.position.x + 2f;
+        }
+        else if (index == 1)
+        {
+            spawnPosX = spawnPos[index].transform.position.x - 2;
+        }
+
+
+        return new Vector3(spawnPosX, spawnPos[index].transform.position.y + 6, 0);
     }
 }
